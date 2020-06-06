@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFHeadPhones.Views.DetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="{StaticResource colorBlackBackground}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="370" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Row="0"
+                        Margin="0,-135,0,0"
+                        Aspect="AspectFill"
+                        HorizontalOptions="FillAndExpand"
+                        Source="oval.png" />
+                    <Grid
+                        Grid.Row="0"
+                        Margin="30,30,30,0"
+                        VerticalOptions="Start">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <ImageButton
+                            Grid.Column="0"
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            Command="{Binding NavigateToMainPage}"
+                            HeightRequest="22"
+                            HorizontalOptions="Start"
+                            Source="ic_menu.png"
+                            WidthRequest="22" />
+                        <ImageButton
+                            Grid.Column="1"
+                            Margin="0,0,25,0"
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            HeightRequest="22"
+                            Source="ic_notification.png"
+                            WidthRequest="22" />
+                        <ImageButton
+                            Grid.Column="2"
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            HeightRequest="22"
+                            HorizontalOptions="End"
+                            Source="ic_shape.png"
+                            WidthRequest="22" />
+                    </Grid>
+                    <Label
+                        x:Name="lbFirstName"
+                        Margin="30,90,0,20"
+                        FontSize="67"
+                        Text="{Binding FirstName}"
+                        TextColor="{StaticResource colorWhite}" />
+                    <Label
+                        x:Name="lbLastName"
+                        Margin="30,142,0,0"
+                        FontSize="100"
+                        Text="{Binding LastName}"
+                        TextColor="{StaticResource colorWhite}" />
+                    <Label
+                        Grid.Row="1"
+                        Margin="30,140,0,0"
+                        FontSize="35"
+                        Text="{Binding Phone.name}"
+                        TextColor="{StaticResource colorWhite}" />
+                    <Label
+                        Grid.Row="2"
+                        Margin="30,20,30,0"
+                        FontSize="20"
+                        Text="{Binding Phone.description}"
+                        TextColor="{StaticResource colorWhite}" />
+                    <Grid
+                        Grid.Row="3"
+                        Margin="30,30,30,0"
+                        RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".6*" />
+                            <ColumnDefinition Width=".4*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontSize="18"
+                            Text="Colour Available"
+                            TextColor="{StaticResource colorWhite}" />
+                        <Grid
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <BoxView
+                                Grid.Column="0"
+                                BackgroundColor="{StaticResource colorWhite}"
+                                CornerRadius="14"
+                                HeightRequest="28"
+                                VerticalOptions="Start"
+                                WidthRequest="28" />
+                            <BoxView
+                                Grid.Column="1"
+                                BackgroundColor="{StaticResource colorRed}"
+                                CornerRadius="14"
+                                HeightRequest="28"
+                                VerticalOptions="Start"
+                                WidthRequest="28" />
+                            <BoxView
+                                Grid.Column="2"
+                                BackgroundColor="{StaticResource colorWhite}"
+                                CornerRadius="14"
+                                HeightRequest="28"
+                                VerticalOptions="Start"
+                                WidthRequest="28" />
+                            <BoxView
+                                Grid.Column="0"
+                                Margin="2"
+                                BackgroundColor="{StaticResource colorRed}"
+                                CornerRadius="12"
+                                HeightRequest="24"
+                                VerticalOptions="Start"
+                                WidthRequest="24" />
+                            <BoxView
+                                Grid.Column="1"
+                                Margin="2"
+                                BackgroundColor="{StaticResource colorWhite}"
+                                CornerRadius="12"
+                                HeightRequest="24"
+                                VerticalOptions="Start"
+                                WidthRequest="24" />
+                            <BoxView
+                                Grid.Column="2"
+                                Margin="2"
+                                BackgroundColor="{StaticResource colorBlack}"
+                                CornerRadius="12"
+                                HeightRequest="24"
+                                VerticalOptions="Start"
+                                WidthRequest="24" />
+                        </Grid>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontSize="18"
+                            Text="Product Price"
+                            TextColor="{StaticResource colorWhite}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontSize="42"
+                            Text="{Binding Phone.price, StringFormat='${0:N2}'}"
+                            TextColor="{StaticResource colorRed}" />
+                    </Grid>
+                    <Button
+                        Grid.Row="4"
+                        Margin="30,20,30,30"
+                        BackgroundColor="{StaticResource colorRed}"
+                        CornerRadius="10"
+                        FontSize="36"
+                        HeightRequest="60"
+                        Text="Purchase Now"
+                        Visual="Material" />
+                </Grid>
+                <Image
+                    x:Name="imgPhone"
+                    Margin="65,-210,70,0"
+                    Aspect="AspectFit"
+                    Source="{Binding Phone.image}" />
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

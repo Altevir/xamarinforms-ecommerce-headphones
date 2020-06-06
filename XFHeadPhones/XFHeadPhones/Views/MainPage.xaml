@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFHeadPhones.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:XFHeadPhones.Models"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:renderers="clr-namespace:XFHeadPhones.Renderers"
+    xmlns:viewmodels="clr-namespace:XFHeadPhones.ViewModels"
+    ios:Page.UseSafeArea="True"
+    x:DataType="viewmodels:MainPageViewModel"
+    BackgroundColor="{StaticResource colorBlackBackground}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="350" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="235" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <ImageButton
+                    Grid.Column="0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    HeightRequest="22"
+                    HorizontalOptions="Start"
+                    Source="ic_menu.png"
+                    WidthRequest="22" />
+                <ImageButton
+                    Grid.Column="1"
+                    Margin="0,0,25,0"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    HeightRequest="22"
+                    Source="ic_notification.png"
+                    WidthRequest="22" />
+                <ImageButton
+                    Grid.Column="2"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    HeightRequest="22"
+                    HorizontalOptions="End"
+                    Source="ic_shape.png"
+                    WidthRequest="22" />
+            </Grid>
+            <Grid Grid.Row="1" Margin="30,0,30,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    FontSize="50"
+                    Text="Discover"
+                    VerticalOptions="End" />
+                <Frame
+                    Grid.Column="1"
+                    Padding="0"
+                    BackgroundColor="{StaticResource colorWhite}"
+                    CornerRadius="10"
+                    HeightRequest="52"
+                    VerticalOptions="Center"
+                    WidthRequest="52">
+                    <Image Aspect="AspectFill" Source="woman.jpg" />
+                </Frame>
+            </Grid>
+            <pancakeView:PancakeView
+                Grid.Row="2"
+                Margin="30,15"
+                Padding="10"
+                BackgroundColor="{StaticResource colorBlack}"
+                BorderColor="{StaticResource colorRed}"
+                BorderThickness="1"
+                CornerRadius="10"
+                HeightRequest="48">
+                <renderers:CustomEntryBorderless
+                    BackgroundColor="{StaticResource colorBlack}"
+                    FontSize="Small"
+                    Placeholder="Search modal number, product..."
+                    PlaceholderColor="White"
+                    TextColor="White" />
+            </pancakeView:PancakeView>
+            <Label
+                Grid.Row="3"
+                Margin="30,0,0,0"
+                FontSize="38"
+                Text="Discover">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Exclusive " TextColor="{StaticResource colorWhite}" />
+                        <Span Text="Headphones" TextColor="{StaticResource colorRed}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <CollectionView
+                x:Name="listPhones"
+                Grid.Row="4"
+                HorizontalScrollBarVisibility="Never"
+                ItemsSource="{Binding Phones}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Phone">
+                        <Grid>
+                            <pancakeView:PancakeView
+                                Margin="30,20,0,20"
+                                Padding="10,20,10,15"
+                                BackgroundColor="{StaticResource colorWhite}"
+                                CornerRadius="18"
+                                HasShadow="False"
+                                WidthRequest="200">
+                                <Grid RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.ColumnSpan="2"
+                                        Aspect="AspectFill"
+                                        HorizontalOptions="Center"
+                                        Source="{Binding image}">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Path=BindingContext.NavigateToDetailPage, Source={x:Reference listPhones}}"
+                                                CommandParameter="{Binding .}"
+                                                NumberOfTapsRequired="1" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.ColumnSpan="2"
+                                        Margin="15,0,0,-5"
+                                        FontSize="30"
+                                        Text="{Binding name}"
+                                        TextColor="{StaticResource colorBlack}" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Margin="15,0,0,2"
+                                        FontSize="35"
+                                        Text="{Binding price, StringFormat='${0:N0}'}"
+                                        TextColor="{StaticResource colorRed}"
+                                        VerticalOptions="End" />
+                                    <pancakeView:PancakeView
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Margin="0,0,5,8"
+                                        BackgroundColor="{StaticResource colorRed}"
+                                        CornerRadius="10"
+                                        Elevation="5"
+                                        HasShadow="False"
+                                        HeightRequest="48"
+                                        WidthRequest="48">
+                                        <Image
+                                            Margin="10"
+                                            Aspect="AspectFit"
+                                            Source="ic_cart.png" />
+                                    </pancakeView:PancakeView>
+                                </Grid>
+                            </pancakeView:PancakeView>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label
+                Grid.Row="5"
+                Margin="30,0"
+                FontSize="34"
+                Text="Discover">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Speakers " TextColor="{StaticResource colorWhite}" />
+                        <Span Text="Collections" TextColor="{StaticResource colorRed}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <CollectionView
+                Grid.Row="6"
+                Margin="0,0,0,15"
+                HorizontalScrollBarVisibility="Never"
+                ItemsSource="{Binding Speakers}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Speaker">
+                        <Grid>
+                            <pancakeView:PancakeView
+                                Margin="30,30,0,10"
+                                Padding="10,20,10,15"
+                                BackgroundColor="{StaticResource colorWhite}"
+                                CornerRadius="18"
+                                HasShadow="False"
+                                WidthRequest="200">
+                                <Grid RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.ColumnSpan="2"
+                                        Margin="15,0,0,-15"
+                                        FontSize="25"
+                                        Text="{Binding description}"
+                                        TextColor="Black"
+                                        VerticalOptions="End" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Margin="15,0,0,0"
+                                        FontSize="30"
+                                        Text="{Binding price, StringFormat='${0:N2}'}"
+                                        TextColor="{StaticResource colorRed}"
+                                        VerticalOptions="End" />
+                                    <pancakeView:PancakeView
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Margin="0,0,3,6"
+                                        BackgroundColor="{StaticResource colorRed}"
+                                        CornerRadius="10"
+                                        Elevation="3"
+                                        HasShadow="False"
+                                        HeightRequest="48"
+                                        VerticalOptions="End"
+                                        WidthRequest="48">
+                                        <Image
+                                            Margin="12"
+                                            Aspect="AspectFit"
+                                            Source="ic_cart.png" />
+                                    </pancakeView:PancakeView>
+                                </Grid>
+                            </pancakeView:PancakeView>
+                            <Image
+                                Margin="0,-90,0,0"
+                                Aspect="AspectFit"
+                                HeightRequest="180"
+                                HorizontalOptions="End"
+                                Source="{Binding image}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

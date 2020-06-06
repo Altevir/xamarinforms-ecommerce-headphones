@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="XFHeadPhones.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Application.Resources>
+        <OnPlatform x:Key="FontLeagueGothicRegular" x:TypeArguments="x:String">
+            <On Platform="Android" Value="LeagueGothic-Regular.otf#LeagueGothic-Regular" />
+            <On Platform="iOS" Value="LeagueGothic-Regular" />
+        </OnPlatform>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontFamily" Value="{StaticResource FontLeagueGothicRegular}" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontFamily" Value="{StaticResource FontLeagueGothicRegular}" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontFamily" Value="{StaticResource FontLeagueGothicRegular}" />
+        </Style>
+        <Color x:Key="colorBlackBackground">#1D1E21</Color>
+        <Color x:Key="colorBlack">#000000</Color>
+        <Color x:Key="colorRed">#F43440</Color>
+        <Color x:Key="colorWhite">#FFFFFF</Color>
+    </Application.Resources>
+</Application>
