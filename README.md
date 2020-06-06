@@ -23,3 +23,6 @@ O que foi usado no desenvolvimento:
 ### Design 
 https://www.uplabs.com/posts/ecommerce-app-ui-concept
 ![uplabs](https://user-images.githubusercontent.com/11803107/83947676-e38dd680-a7ee-11ea-9810-a6d9d8000ddc.png)
+
+### Licença
+MIT - Consulte o arquivo LICENSE.txt
