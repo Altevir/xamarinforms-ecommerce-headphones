@@ -25,16 +25,11 @@ namespace XFHeadPhones.Views
         {
             await Task.WhenAll(
                 lbFirstName.TranslateTo(-150, 0, DURATION_NAME, Easing.Linear),
-                lbFirstName.FadeTo(0.5, DURATION_NAME, Easing.Linear),
                 lbFirstName.TranslateTo(-75, 0, DURATION_NAME, Easing.Linear),
                 lbFirstName.TranslateTo(0, 0, DURATION_NAME, Easing.Linear),
-                lbFirstName.FadeTo(1, DURATION_NAME, Easing.Linear),
-
                 lbLastName.TranslateTo(-300, 0, DURATION_NAME, Easing.Linear),
-                lbLastName.FadeTo(0.5, DURATION_NAME, Easing.Linear),
                 lbLastName.TranslateTo(-150, 0, DURATION_NAME, Easing.Linear),
-                lbLastName.TranslateTo(0, 0, DURATION_NAME, Easing.Linear),
-                lbLastName.FadeTo(1, DURATION_NAME, Easing.Linear)
+                lbLastName.TranslateTo(0, 0, DURATION_NAME, Easing.Linear)
             );
 
             await imgPhone.TranslateTo(350, 0, DURATION_IMG, Easing.Linear);
