@@ -1,3 +1,4 @@
+<img src="https://user-images.githubusercontent.com/11803107/79746139-e20c5b80-82df-11ea-8039-21680c5b9e35.jpg" width="220" height="60"><br/>
 # Xamarin.Forms E-commerce HeadPhones App
 Conceito de App desenvolvido com XamarinForms. </br>
 O que foi usado no desenvolvimento:
